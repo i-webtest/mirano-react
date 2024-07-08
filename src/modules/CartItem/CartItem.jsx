@@ -2,7 +2,7 @@ import s from '../Cart/Cart.module.scss';
 
 export const CartItem = ({ img, title, price }) => (
   <li className={s.cart__item}>
-    <img className={s.cart__img} src={img} alt='Букет из роз Grand Avalanche (101 шт)' />
+    <img className={s.cart__img} src={img} alt={title} />
     <h4 className={s['cart__item-title']}>{title}</h4>
     <div className={s.cart__counter}>
       <button className={s['cart__counter-btn']}>-</button>
