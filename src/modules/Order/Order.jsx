@@ -5,21 +5,19 @@ import { closeModal } from '../../redux/orderSlice';
 
 export const Order = () => {
   const dispatch = useDispatch();
-  const isOrder = false;
+  const isOrderReady = false;
   const isOpen = useSelector((state) => state.order.isOpen);
 
-  const handlerClose = ({ target }) => {
-    if (target.matches(`.${s.order}`) || target.closest(`.${s.order__close}`)) {
-      dispatch(closeModal());
-    }
+  const handlerClose = () => {
+    dispatch(closeModal());
   };
 
   if (!isOpen) return null;
 
   return (
     <div className={s.order} onClick={handlerClose}>
-      <div className={s.order__wrapper}>
-        {isOrder ? (
+      <div className={s.order__wrapper} onClick={(e) => e.stopPropagation()}>
+        {isOrderReady ? (
           <>
             <h2 className={s.order__title}>Заказ оформлен!</h2>
             <p className={s.order__id}>Ваш номер заказа: 971f365a-caa1-4cdb-9446-bad2eff047e1</p>
